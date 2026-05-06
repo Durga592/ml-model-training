@@ -71,11 +71,11 @@ def save_model_artifact(model_name,pipeline):
     artifact_name = model_name+'_model.joblib'
     dump(pipeline,artifact_name)
     # Uncomment below lines for cloud execution
-    model_artifact = bucket.blob('ml-artifacts/'+artifact_name)
+    model_artifact = bucket.blob('bank_campaign_artifact/'+artifact_name)
     model_artifact.upload_from_filename(artifact_name)
 
 def load_model_artifact(file_name):
-    blob = bucket.blob("ml-artifacts/" + file_name)
+    blob = bucket.blob("bank_campaign_artifact/" + file_name)
     blob.download_to_filename(file_name)
     return load(file_name)
 
