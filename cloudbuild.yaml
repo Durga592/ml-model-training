@@ -1,25 +1,22 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/ml-models/bank-campaign-model', '.']
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/mlops-1-494812/ml-models/bank-campaign-model:latest', '.']
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/ml-models/bank-campaign-model']
+  args: ['push', 'us-central1-docker.pkg.dev/mlops-1-494812/ml-models/bank-campaign-model:latest']
 
-- name: 'gcr.io/ml-models/bank-campaign-model'
+- name: 'us-central1-docker.pkg.dev/mlops-1-494812/ml-models/bank-campaign-model:latest'
   entrypoint: 'bash'
   args:
    - '-c'
    - |
       python -m pytest
 
-- name: 'gcr.io/cloud-builders/git'
-  args: ['clone', 'https://github.com/Durga592/ml-model-training.git']
-
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', 'ml-model-training/bank_campaign_model_training.py', 'gs://us-central1-mlops-airflow-0d99ad20-bucket/dags']
+  args: ['cp', 'bank_campaign_model_training.py', 'gs://us-central1-mlops-airflow-0d99ad20-bucket/dags']
 
 images:
-- 'gcr.io/ml-models/bank-campaign-model'
+- 'us-central1-docker.pkg.dev/mlops-1-494812/ml-models/bank-campaign-model:latest'
 
 options:
   logging: CLOUD_LOGGING_ONLY
