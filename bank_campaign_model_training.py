@@ -15,6 +15,7 @@ from datetime import datetime
 storage_client = storage.Client()
 bucket = storage_client.bucket("sidd-ml-ops-new")
 
+
 def load_data(path):
     return pd.read_csv(path,sep=";")
 
