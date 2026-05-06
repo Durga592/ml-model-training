@@ -1,5 +1,5 @@
 scikit-learn==1.2.2
-xgboost==1.6.2
+xgboost>=1.7.3
 pandas
 pyarrow
 pytest

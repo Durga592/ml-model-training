@@ -18,6 +18,7 @@ COPY bank_campaign_model_training.py bank_campaign_model_training.py
 # 3. Install the rest of the requirements
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir "numpy==1.23.5" && \
+    pip install --no-cache-dir xgboost>=1.7.3 joblib>=1.2.0 && \
     pip install --no-cache-dir -r requirements.txt
 
 # This is necessary if your cloudbuild.yaml runs 'python -m pytest' inside the container
