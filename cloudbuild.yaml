@@ -1,11 +1,11 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/ml_ops/bank-campaign-model', '.']
+  args: ['build', '-t', 'gcr.io/ml-models/bank-campaign-model', '.']
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/ml_ops/bank-campaign-model']
+  args: ['push', 'gcr.io/ml-models/bank-campaign-model']
 
-- name: 'gcr.io/ml_ops/bank-campaign-model'
+- name: 'gcr.io/ml-models/bank-campaign-model'
   entrypoint: 'bash'
   args:
    - '-c'
@@ -19,7 +19,7 @@ steps:
   args: ['cp', 'ml-model-training/bank_campaign_model_training.py', 'gs://us-central1-mlops-airflow-0d99ad20-bucket/dags']
 
 images:
-- 'gcr.io/ml_ops/bank-campaign-model'
+- 'gcr.io/ml-models/bank-campaign-model'
 
 options:
   logging: CLOUD_LOGGING_ONLY
