@@ -16,7 +16,7 @@ steps:
   args: ['clone', 'https://github.com/Durga592/ml-model-training.git']
 
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', 'model-training-repo/bank_campaign_model_training.py', 'gs://us-central1-mlops-airflow-0d99ad20-bucket/dags']
+  args: ['cp', 'ml-model-training/bank_campaign_model_training.py', 'gs://us-central1-mlops-airflow-0d99ad20-bucket/dags']
 
 images:
 - 'gcr.io/ml_ops/bank-campaign-model'
